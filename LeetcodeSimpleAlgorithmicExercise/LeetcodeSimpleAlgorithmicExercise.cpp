@@ -1,9 +1,10 @@
 ﻿// LeetcodeSimpleAlgorithmicExercise.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
-
+#include <cstdlib>
 #include <iostream>
 #include <vector>
 #include <map>
+#include <string>
 using namespace std;
 vector<int> twoSum(vector<int>& nums, int target);
 
@@ -13,6 +14,7 @@ int reverse(int x);
 int main()
 {
     std::cout << "Hello World!\n";
+	cout<<reverse(-123)<<endl;
 }
 // 两数之和 
 vector<int> twoSum(vector<int>& nums, int target) 
@@ -21,6 +23,7 @@ vector<int> twoSum(vector<int>& nums, int target)
 	map<int, int>mapNum;
 	for (i = 0; i < nums.size(); i++)
 	{
+
 		auto it = mapNum.find(target - nums[i]);
 		if (it != mapNum.end())
 		{
@@ -35,6 +38,16 @@ vector<int> twoSum(vector<int>& nums, int target)
 // 给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
 int reverse(int x)
 {
+	// 判断是否在-2~31-2~31-1
+
+	long rev = 0;
+	while (x)
+	{
+		int pop = x % 10;
+		x /= 10;
+		rev = rev * 10 + pop;
+	}
+	return (rev > INT_MAX || rev < INT_MIN) ? 0 : static_cast<int>(rev);
 
 }
 
